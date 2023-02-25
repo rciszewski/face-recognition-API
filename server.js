@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
+const { DB_KEY } = require('./config');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -11,11 +12,11 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'dpg-cfs0e8pgp3jqrleqogh0-a',
     port : 5432,
-    user : '',
-    password : '',
-    database : 'smart-brain'
+    user : 'smartbrain_qahb_user',
+    password : DB_KEY,
+    database : 'smartbrain_qahb'
   }
 });
 
@@ -25,7 +26,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.get('/', (req, res) => res.send('success'))
+app.get('/', (req, res) => res.send('success beautiful'))
 
 app.post('/signin', (req, res) => {signin.handleSignIn(req, res, bcrypt, db)})
 app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)})
