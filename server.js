@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-const { DB_KEY } = require('./config');
+const { DB_EXT_URL } = require('./config');
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
@@ -11,13 +11,7 @@ const image = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
-  connection: {
-    host : 'dpg-cfs0e8pgp3jqrleqogh0-a',
-    port : 5432,
-    user : 'smartbrain_qahb_user',
-    password : DB_KEY,
-    database : 'smartbrain_qahb'
-  }
+  connection: DB_EXT_URL
 });
 
 const app = express();
