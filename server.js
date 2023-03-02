@@ -23,8 +23,7 @@ app.use(cors());
 app.get('/', (req, res) => res.send('success beautiful'))
 
 app.post('/signin', (req, res) => {signin.handleSignIn(req, res, bcrypt, db)})
-app.post('/register', (req, res) => res.send('reached register endpoint'));
-// app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)})
+app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)})
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)});
 app.put('/image', (req, res) => {image.handleImageSubmit(req, res, db)});
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
